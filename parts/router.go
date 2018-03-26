@@ -162,7 +162,7 @@ func (router *Router) route(data interface{}) (map[string]interface{}, error) {
 
 	// filter data if filter expession has been defined
 	if router.filterRegexp != nil {
-		if !utils.RegexpMatch(router.filterRegexp, uprEvent.Key) {
+		if !utils.RegexpMatch(router.filterRegexp, uprEvent.Value) {
 			// if data does not match filter expression, drop it. return empty result
 			router.RaiseEvent(common.NewEvent(common.DataFiltered, uprEvent, router, nil, nil))
 			return result, nil
